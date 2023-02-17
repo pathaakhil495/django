@@ -1,0 +1,36 @@
+{%extends 'home.html'%}
+{%load static%}
+{%block body%}
+<div class="form">
+<form action="partners" method="post">
+    {%csrf_token%}
+    course: <select class="form-select" aria-label="Default select example" name="acourse">
+        {%for i in details_course%}
+        <option value="{{i}}">{{i}}</option>
+        {%endfor%}
+    </select><br>
+    <center><button type="submit" class="btn btn-primary">submit</button></center>
+</center>
+</form>
+</div>
+<center><h2>Paring Students</h2></center>
+
+<div class="form">
+    <table class="table table-hover" border="1">
+        <tr>
+            <th>poor</th>
+            <th>good</th>
+        </tr>
+        {%for i,j in partners_list%}
+        <tr>
+            <td>{{i}}</td>
+            <td>{{j}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<center>
+<button type="button" class="btn btn-success"><a style="text-decoration: none;color:black;" href="media/partners_list_df.csv" download="file.csv">download</a></button>
+</center>
+
+{%endblock%}
